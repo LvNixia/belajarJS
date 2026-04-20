@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+    <h2>Counter</h2>
+    <p id="count" style="font-size: 40px;">0</p>
+
+    <button onclick="naikanNilai()">+</button>
+    <button onclick="turunkanNilai()">-</button>
+    <button onclick="simpanNilai()">Simpan</button>
+    <button onclick="risetNilai()">Riset</button>
+    <button onclick="panggilNilai()">Panggil</button>
+
+    <script>
+        let count = 0;
+
+        function updateCount(){
+            document.getElementById("count").innerHTML = count;
+        }
+        function naikanNilai(){
+            count++;
+            updateCount();
+        }
+        function turunkanNilai(){
+            count--;
+            updateCount();
+        }
+        function simpanNilai(){
+            localStorage.setItem("count", count);
+        }
+        function risetNilai(){
+            count = 0;
+            updateCount();
+        }
+        function panggilNilai(){
+            let saved = localStorage.getItem("count");
+            if (saved !== null) {
+                count = Number(saved);
+            }
+            updateCount();
+        }
+    </script>
+</body>
+</html>
